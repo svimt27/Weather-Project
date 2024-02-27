@@ -1,0 +1,71 @@
+<!-- <h1 class="text-center font-bold text-2xl mt-4">Weather APP</h1>
+<div class="container mx-auto bg-slate-400  mt-3 py-10 flex justify-between rounded-lg shadow-xl">
+    <div class="mx-6 w-1/2">
+        <h1 class="text-slate-100 font-bold text-2xl text-center">Search For Weather</h1>
+        <form [formGroup]="weatherData" (ngSubmit)="getweatherData(weatherData)">
+            <input type="text" class="bg-white px-3 py-2 mt-3 rounded-lg outline-none placeholder:italic"
+                placeholder="Enter Location" formControlName="location">
+            <button class="bg-gradient-to-r from-sky-300 to-sky-500 px-3 py-2 rounded-lg ml-3 font-medium text-white"
+                [disabled]="weatherData.invalid">Search</button>
+        </form>
+    </div>
+
+    <div class="mx-6 w-1/2">
+        <h1 class="text-slate-100 font-bold text-2xl text-center">Weather Details</h1>
+        <h1 class="text-slate-100 font-bold text-2xl text-center">{{allWeatherData.name}} {{allWeatherData.main.temp}}°C
+        <span *ngFor="let icon of allWeatherData.weather">
+            <img src="http://openweathermap.org/img/wn/{{icon.icon}}@2x.png" alt="" class="inline-block">
+        </span>
+        </h1>
+        <div class="mt-3 mx-10">
+            <h2 class="inline">Min:{{allWeatherData.main.temp_min}}°C</h2>
+            <h2 class="float-right">Max:{{allWeatherData.main.temp_max}}°C</h2>
+        </div>
+        <div class="mt-3 mx-10">
+            <h2 class="inline">pressure:{{allWeatherData.main.pressure}}</h2>
+            <h2 class="float-right">humidity:{{allWeatherData.main.humidity}}%</h2>
+        </div>
+        <div class="mt-3 mx-10">
+            <h2 class="inline">Wind speed:{{allWeatherData.wind.speed}}</h2>
+            <h2 class="float-right">Wind speed:{{allWeatherData.wind.speed}}</h2>
+        </div>
+    </div>
+</div> -->
+
+
+
+<div class="container mx-auto w-1/4 bg-[#4e52af] rounded-lg px-4 relative py-4 shadow-2xl mt-16">
+    <h1 class="text-lg font-bold text-center text-slate-300">Weather App</h1> 
+    <!-- <img src="http://media.bom.gov.au/social/upload/images/19April.jpg" class="rounded-md">   -->
+        <img [src]="weatherImgUrl" class="rounded-md"> 
+    <h1 class=" text-2xl font-bold text-white">{{temp | number:'1.2-2'}}°C
+        <span *ngFor="let icon of allWeatherData.weather">
+            <img src="http://openweathermap.org/img/wn/{{icon.icon}}@2x.png"  class="inline-block text-white">
+            <span>{{icon.main}}</span>
+        </span>
+    </h1> 
+    <h1 class="text-slate-100 font-bold text-2xl text-center inline-block">{{allWeatherData.name}}</h1>
+ 
+ <div class="">
+    <form [formGroup]="weatherData" (ngSubmit)="getweatherData(weatherData)">
+        <input type="text" class="bg-[#5d62b2] mt-2 rounded outline-none p-1 placeholder:italic" placeholder="Enter Location" formControlName="location">
+        <button class="mt-2 bg-sky-500 text-white p-1 rounded ml-6" [disabled]="weatherData.invalid">Search</button>
+       </form>  
+       <h2 class="text-slate-200 font-medium text-sm mt-3">More Information</h2>
+ </div>
+
+ <div class="mt-2 bg-[#5d62b2] rounded-sm pb-4 py-2">
+  <div class="grid grid-cols-2 px-2">
+    <div class="font-bold text-sm text-slate-200">Min: {{temp | number:'1.2-2'}}°C</div>
+    <div class="font-bold text-sm text-slate-200">Max: {{temp | number:'1.2-2'}}°C</div>
+  </div>
+  <div class="grid grid-cols-2 px-2 mt-2">
+    <div class="font-bold text-sm text-slate-200">pressure: {{allWeatherData.main.pressure}}</div>
+    <div class="font-bold text-sm text-slate-200">humidity: {{allWeatherData.main.humidity}}%</div>
+  </div>
+  <div class="grid grid-cols-2 px-2 mt-2 ">
+    <div class="font-bold text-sm text-slate-200">Wind speed: {{allWeatherData.wind.speed}}</div>
+    <div class="font-bold text-sm text-slate-200">Max: {{temp | number:'1.2-2'}}°C</div>
+  </div>
+ </div>
+</div>
